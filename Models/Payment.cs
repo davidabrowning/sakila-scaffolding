@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SakilaScaffolding;
+namespace SakilaScaffolding.Model;
 
 public partial class Payment
 {

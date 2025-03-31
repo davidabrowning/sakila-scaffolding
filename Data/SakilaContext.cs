@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using SakilaScaffolding.Model;
 
-namespace SakilaScaffolding;
+namespace SakilaScaffolding.Data;
 
 public partial class SakilaContext : DbContext
 {
