@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SakilaScaffolding;
+namespace SakilaScaffolding.Model;
 
-public partial class StaffList
+public partial class CustomerList
 {
-    public byte Id { get; set; }
+    public int Id { get; set; }
 
     public string Name { get; set; } = null!;
 
@@ -18,6 +18,8 @@ public partial class StaffList
     public string City { get; set; } = null!;
 
     public string Country { get; set; } = null!;
+
+    public string Notes { get; set; } = null!;
 
     public int Sid { get; set; }
 }
