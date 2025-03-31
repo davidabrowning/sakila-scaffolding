@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using SakilaScaffolding.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace SakilaScaffolding.Data;
 
@@ -59,8 +60,13 @@ public partial class SakilaContext : DbContext
     public virtual DbSet<Store> Stores { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; AttachDbFileName=C:\\Users\\david\\AppData\\Local\\Microsoft\\Microsoft SQL Server Local DB\\Instances\\MSSQLLocalDB\\Sakila.mdf");
+    {
+        optionsBuilder.UseSqlServer(new ConfigurationBuilder()
+            .AddJsonFile("Data/appsettings.json")
+            .Build()
+            .GetSection("ConnectionStrings")["SakilaDb"]
+            );
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
